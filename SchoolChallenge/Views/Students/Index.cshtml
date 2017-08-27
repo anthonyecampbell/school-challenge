@@ -1,5 +1,4 @@
-@model IEnumerable<SchoolChallenge.Models.Student>
-    @using SchoolChallenge.Models
+@model System.Collections.Generic.IEnumerable<SchoolChallenge.Models.Student>
    
     @{
         ViewBag.Title = "Students";
@@ -35,6 +34,6 @@
             }
         </tbody>
     </table>
-                      <div>
-                          @Html.ActionLink("Import CSV", "Import", "Students", null, new { @class = "btn btn-primary" })
-                      </div>
+<div>
+   @Html.ActionLink("Import CSV", "Import", "Students", null, new { @class = "btn btn-primary" })
+</div>
