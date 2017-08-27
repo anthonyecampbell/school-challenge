@@ -43,3 +43,7 @@ Here are a couple user stories to help guide the development of the solution.
 - User wants validation to prevent errors in data entry
 
 These are just samples. Please add additional features to highlight your skills and thought process.
+
+## External Dependencies ##
+- Please have SQL Express 2016 installed on local machine with a .\SQLEXPRESS instance for the database.
+- The CSV files should be in C:\Sample Data\, they should be named: Interview-Data-Students.csv and Interview-Data-Teachers.csv.
