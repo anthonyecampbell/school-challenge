@@ -1,13 +1,15 @@
 @model IEnumerable<SchoolChallenge.Models.Student>
     @using SchoolChallenge.Models
-    @using X.PagedList
+   
     @{
         ViewBag.Title = "Students";
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
 
     <h2>Customers</h2>
-    
+<p>
+    @Html.ActionLink("Add Student", "Add", "Students", null, new { @class = "btn btn-primary" })
+</p>
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
