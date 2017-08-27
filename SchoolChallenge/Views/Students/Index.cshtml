@@ -1,0 +1,35 @@
+@model IEnumerable<SchoolChallenge.Models.Student>
+    @using SchoolChallenge.Models
+    @using X.PagedList
+    @{
+        ViewBag.Title = "Students";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Customers</h2>
+    
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Student Id</th>
+                <th>Student Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Has Scholarship?</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.StudentNumber</td>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>@student.HasScholarship</td>
+                    <td>@Html.ActionLink("Edit", "Edit", "Students", new { id = student.Id }, null)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
