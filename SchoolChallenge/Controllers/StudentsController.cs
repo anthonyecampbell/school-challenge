@@ -77,6 +77,21 @@ namespace SchoolChallenge.Controllers
             return RedirectToAction("Index", "Students");
         }
 
+        public IActionResult Import()
+        {
+            string filePath = @"C:\SampleData\Interview-Data-Students.csv";
+            if (!(System.IO.File.Exists(filePath)))
+            {
+                return RedirectToAction("Index", "Students");
+            }
+            else
+            {
+                ImportCSV(filePath);
+            }
+
+            return RedirectToAction("Index", "Students");
+        }
+
         // method to load all students from the database
         public List<Student> LoadStudents()
         {
@@ -191,6 +206,47 @@ namespace SchoolChallenge.Controllers
                 }
             }
             return student;
+        }
+
+        // method to import items from csv in the database.
+        // method will only import entries that aren't in the database
+        public void ImportCSV(string filePath)
+        {
+
+            var lines = System.IO.File.ReadAllLines(filePath).Skip(1);
+            var csvStudent = new Student();
+
+            foreach (string item in lines)
+            {
+                var values = item.Split(',');
+
+                csvStudent.StudentNumber = values[1];
+                csvStudent.FirstName = values[2];
+                csvStudent.LastName = values[3];
+
+                if (values[4] == "yes")
+                {
+                    csvStudent.HasScholarship = true;
+                }
+                else
+                {
+                    csvStudent.HasScholarship = false;
+                }
+
+                var sqlStudentList = new List<Student>();
+                sqlStudentList = LoadStudents();
+
+                if (!sqlStudentList.Any(x => x.FirstName == csvStudent.FirstName && x.LastName == csvStudent.LastName &&
+                                             x.StudentNumber == csvStudent.StudentNumber))
+                {
+                    InsertStudent(csvStudent);
+                }
+                else
+                {
+                    continue;
+                }
+
+            }
         }
     }
 }
