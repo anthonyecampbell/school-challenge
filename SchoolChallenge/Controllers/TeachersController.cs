@@ -122,7 +122,7 @@ namespace SchoolChallenge.Controllers
                             {
                                 teacher.NumberOfStudents = Int32.Parse(reader["NumberOfStudents"].ToString());
                             }
-                            
+
 
                             teacherList.Add(teacher);
                         }
@@ -167,7 +167,7 @@ namespace SchoolChallenge.Controllers
                 string sql = "Update Teachers Set " +
                              "FirstName='" + teacher.FirstName.ToString() + "'," +
                              "LastName='" + teacher.LastName.ToString() + "'," +
-                             "NumberOfStudents='" +teacher.NumberOfStudents.ToString() + 
+                             "NumberOfStudents='" + teacher.NumberOfStudents.ToString() +
                              "' where id =" +
                              teacher.Id.ToString();
 
