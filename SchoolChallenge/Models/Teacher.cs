@@ -11,11 +11,11 @@ namespace SchoolChallenge.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter a first name!")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter a last name!")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
